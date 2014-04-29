@@ -34,8 +34,26 @@
 		</plugins>
 	</build>
 
+	<properties>
+		<spring.framework.version>3.2.4.RELEASE</spring.framework.version>
+	</properties>
 
 	<dependencies>
+
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- spring mvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
