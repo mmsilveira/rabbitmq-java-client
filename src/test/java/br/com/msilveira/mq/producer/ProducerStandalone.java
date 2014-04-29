@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.neoway.neodealer.mq.core.QueueProducer;
+import br.com.msilveira.mq.core.QueueProducer;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 

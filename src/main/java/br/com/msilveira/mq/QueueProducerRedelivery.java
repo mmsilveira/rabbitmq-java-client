@@ -2,7 +2,7 @@ package br.com.msilveira.mq;
 
 import java.io.IOException;
 
-import br.com.neoway.neodealer.mq.core.ClientRabbitMQ;
+import br.com.msilveira.mq.core.ClientRabbitMQ;
 
 public class QueueProducerRedelivery extends ClientRabbitMQ {
 

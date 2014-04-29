@@ -1,4 +1,4 @@
-package br.com.neoway.neodealer.mq.core;
+package br.com.msilveira.mq.core;
 
 import java.io.IOException;
 import java.util.Date;

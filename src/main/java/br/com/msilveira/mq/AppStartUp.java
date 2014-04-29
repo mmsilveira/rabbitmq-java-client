@@ -8,7 +8,7 @@ import javax.servlet.ServletContextListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import br.com.neoway.neodealer.mq.core.QueueConsumer;
+import br.com.msilveira.mq.core.QueueConsumer;
 
 public class AppStartUp implements ServletContextListener {
 
