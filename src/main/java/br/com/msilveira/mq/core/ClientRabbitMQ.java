@@ -12,6 +12,7 @@ public abstract class ClientRabbitMQ {
 	protected Channel channel;
 	protected Connection connection;
 	protected String[] routingKeys;
+	protected String exchangeName;
 
 	public ClientRabbitMQ prepareClientRabbitMQ(String host, String userName, String password) throws IOException {
 		ConnectionFactory factory = new ConnectionFactory();
@@ -25,17 +26,24 @@ public abstract class ClientRabbitMQ {
 	}
 
 	public ClientRabbitMQ createExchange(String name, String type, Boolean durable, Boolean autoDelete, Map<String, Object> args) throws IOException {
+		this.exchangeName = name;
 		channel.exchangeDeclare(name, type, durable, autoDelete, args);
 		return this;
 	}
 	
 	public ClientRabbitMQ createExchange(String name, String type, Boolean durable, Boolean autoDelete) throws IOException {
+		this.exchangeName = name;
 		channel.exchangeDeclare(name, type, durable, autoDelete, null);
 		return this;
 	}
 	
 	public ClientRabbitMQ createQueue(String name, Boolean durable, Boolean exclusive, Boolean autoDelete, Map<String, Object> args) throws IOException {
 		channel.queueDeclare(name, durable, exclusive, autoDelete, args);
+		return this;
+	}
+	
+	public ClientRabbitMQ createQueue(String name, Boolean durable, Boolean exclusive, Boolean autoDelete) throws IOException{
+		channel.queueDeclare(name, durable, exclusive, autoDelete, null);
 		return this;
 	}
 	
