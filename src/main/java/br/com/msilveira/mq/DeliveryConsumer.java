@@ -16,9 +16,12 @@ import com.rabbitmq.client.Envelope;
 public class DeliveryConsumer extends QueueConsumer{
 
 	private static final int PREFETCH_COUNT = 1;
-	private static final String USER_NAME = "admin";
-	private static final String PASSWORD = "admin";
-	private static final String HOST = "192.168.13.15";
+	private static final String USER_NAME = "guest";
+	private static final String PASSWORD = "guest";
+	private static final String HOST = "localhost";
+//	private static final String USER_NAME = "admin";
+//	private static final String PASSWORD = "admin";
+//	private static final String HOST = "192.168.13.15";
 	
 	private static final String EXCHANGE_NAME = "exchange_delivery";
 	private static final String EXCHANGE_TYPE = "direct";
