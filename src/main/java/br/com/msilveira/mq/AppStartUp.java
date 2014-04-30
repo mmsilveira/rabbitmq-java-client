@@ -8,37 +8,37 @@ import javax.servlet.ServletContextListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import br.com.msilveira.mq.core.QueueConsumer;
-
 public class AppStartUp implements ServletContextListener {
 
-	private QueueConsumer consumer;
+	private DeliveryConsumer deliveryConsumer;
 	
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		try {
-			WebApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
+			@SuppressWarnings("unused")
+			WebApplicationContext applicationContext = createWebApplicationContext(servletContextEvent);
 //			OperacaoService operacaoService = applicationContext.getBean("mq_service_operacaoService", OperacaoService.class);
 			
-			consumer = new QueueConsumer("1");
-			consumer.startConsumingMessages();
-//			
-//			consumer = new QueueConsumer(operacaoService, "2");
-//			consumer.startConsumingMessages();
+			deliveryConsumer = new DeliveryConsumer("1");
+			deliveryConsumer.configureAllSystemForMessages();
+			deliveryConsumer.start(DeliveryConsumer.QUEUE_NAME, DeliveryConsumer.AUTO_ACK, DeliveryConsumer.CONSUMER_TAG);
 			
-//			consumer = new QueueConsumer(operacaoService, "3");
-//			consumer.startConsumingMessages();
-//			
-//			consumer = new QueueConsumer(operacaoService, "4");
-//			consumer.startConsumingMessages();
+//			deliveryConsumer = new DeliveryConsumer("2");
+//			deliveryConsumer.start(DeliveryConsumer.QUEUE_NAME, DeliveryConsumer.AUTO_ACK, DeliveryConsumer.CONSUMER_TAG);
+
+//			deliveryConsumer = new DeliveryConsumer("3");
+//			deliveryConsumer.start(DeliveryConsumer.QUEUE_NAME, DeliveryConsumer.AUTO_ACK, DeliveryConsumer.CONSUMER_TAG);
 			
 		} catch (IOException e) {
 			System.out.println("Problema ao tentar inicializar o QueueConsumer!");
 		}
-		System.out.println("QueueConsumer iniciado!");
+		System.out.println("QueueConsumer started!");
+	}
+
+	private WebApplicationContext createWebApplicationContext(ServletContextEvent servletContextEvent) {
+		return WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
 	}
 	
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-		// Do cleanup operations here
 		System.out.println("Cleanup activity: QueueConsumer instance set to null");
 	}
 

@@ -60,13 +60,17 @@ public class ProducerStandalone {
 			for (Integer i = 0; i < orderMQs.length; i++) {
 				orderMQ = getMessage(i);
 				producer.sendMessageWithRouting(SerializationUtils.serialize(orderMQ), orderMQ.getTypeItem().toString());
-				System.out.println(" [x] Sent '" + orderMQ.getTypeItem().toString() + "':'" + orderMQ.toString() + "'");
+				System.out.println(getMessageSysOut(orderMQ));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			producer.closeChannelAndConnection();
 		}
+	}
+
+	private static StringBuilder getMessageSysOut(OrderMQ orderMQ) {
+		return new StringBuilder(" [x] Sent '").append(orderMQ.getTypeItem().toString()).append("':'").append(orderMQ.toString()).append("'");
 	}
 	
 	public static OrderMQ getMessage(int i) {
