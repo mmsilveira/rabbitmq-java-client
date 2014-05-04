@@ -1,4 +1,4 @@
-rabbitmq-demo-java
+rabbitmq-java-client
 ==================
 
 Este projeto é um exemplo de como podemos utilizar o RabbitMQ com java. 
