@@ -3,6 +3,7 @@ package br.com.msilveira.mq;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 import org.springframework.util.SerializationUtils;
 
@@ -40,7 +41,7 @@ public class DeliveryConsumer extends QueueConsumer{
 		this.consumerId = consumerId;
 	}
 
-	public void configureAllSystemForMessages() throws IOException{
+	public void configureAllSystemForMessages() throws IOException, TimeoutException {
 		this.prepareClientRabbitMQ(ClientSettings.HOST, ClientSettings.USER_NAME, ClientSettings.PASSWORD)
 				.createExchange(ClientSettings.EXCHANGE_NAME, ClientSettings.EXCHANGE_TYPE, ClientSettings.EXCHANGE_DURABLE, ClientSettings.EXCHANGE_AUTO_DELETE)
 				.setMaxMessageDelivery(PREFETCH_COUNT);

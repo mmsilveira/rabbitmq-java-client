@@ -15,8 +15,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
 				</configuration>
@@ -34,42 +34,43 @@
 	</build>
 
 	<properties>
-		<spring.framework.version>3.2.4.RELEASE</spring.framework.version>
+		<spring-framework.version>3.2.4.RELEASE</spring-framework.version>
+		<servlet-api.version>2.5</servlet-api.version>
+		<commons.version>2.3</commons.version>
+		<rabbitmq.version>3.5.6</rabbitmq.version>
+		<junit.version>3.8.1</junit.version>
 	</properties>
 
 	<dependencies>
 
-		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
+			<version>${servlet-api.version}</version>
 		</dependency>
 
-		<!-- spring mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.framework.version}</version>
+			<version>${spring-framework.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.3</version>
+			<version>${commons.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>amqp-client</artifactId>
-			<version>3.3.0</version>
+			<version>${rabbitmq.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 

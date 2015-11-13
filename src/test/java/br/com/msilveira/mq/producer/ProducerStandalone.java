@@ -3,6 +3,7 @@ package br.com.msilveira.mq.producer;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 import org.springframework.util.SerializationUtils;
 
@@ -33,7 +34,7 @@ public class ProducerStandalone {
 		new OrderMQ("Preta", "222222222", "Without dogs street", "Complete Hotdog", TypeItem.HOT_DOG)
 	};
 
-	public static void main(String[] argv) throws IOException {
+	public static void main(String[] argv) throws IOException, TimeoutException {
 		QueueProducer producer = new QueueProducer();
 		try {
 			producer.prepareClientRabbitMQ(ClientSettings.HOST, ClientSettings.USER_NAME, ClientSettings.PASSWORD)
